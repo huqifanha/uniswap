@@ -125,17 +125,30 @@ export default function AddLiquidity({
     if (!chainId || !library || !account) return
     const router = getRouterContract(chainId, library, account)
 
+    console.log("account:" + account);
+    console.log("chainId:" + chainId);
+    console.log("library:" + library);
+
     const { [Field.CURRENCY_A]: parsedAmountA, [Field.CURRENCY_B]: parsedAmountB } = parsedAmounts
     if (!parsedAmountA || !parsedAmountB || !currencyA || !currencyB) {
       return
     }
+
+    console.log("noLiquidity:" + noLiquidity);
+    console.log("allowedSlippage:" + allowedSlippage);
 
     const amountsMin = {
       [Field.CURRENCY_A]: calculateSlippageAmount(parsedAmountA, noLiquidity ? 0 : allowedSlippage)[0],
       [Field.CURRENCY_B]: calculateSlippageAmount(parsedAmountB, noLiquidity ? 0 : allowedSlippage)[0]
     }
 
+    console.log("parsedAmountA: " + parsedAmountA.raw.toString());
+    console.log("parsedAmountB: " + parsedAmountB.raw.toString());
+    console.log("CURRENCY_A amountsMin: " + amountsMin[Field.CURRENCY_A].toString());
+    console.log("CURRENCY_B amountsMin: " + amountsMin[Field.CURRENCY_B].toString());
+
     const deadlineFromNow = Math.ceil(Date.now() / 1000) + deadline
+    console.log("deadlineFromNow : " + deadlineFromNow);
 
     let estimate,
       method: (...args: any) => Promise<TransactionResponse>,

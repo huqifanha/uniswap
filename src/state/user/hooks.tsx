@@ -66,7 +66,7 @@ export function useDarkModeManager(): [boolean, () => void] {
 }
 
 export function useIsExpertMode(): boolean {
-  return useSelector<AppState, AppState['user']['userExpertMode']>(state => state.user.userExpertMode)
+  return useSelector<AppState, AppState['user']['userExpertMode']>(state => state.user.userExpertMode);
 }
 
 export function useExpertModeManager(): [boolean, () => void] {
