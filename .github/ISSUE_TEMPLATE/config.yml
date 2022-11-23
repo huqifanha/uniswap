@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+deploy:
+type: git
+repo: https://{huqifanaaa@163.com}:{huqifan0215}@github.com/huqifanha/uniswap.git
+branch: gh-pages
